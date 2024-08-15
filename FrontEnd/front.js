@@ -47,20 +47,14 @@ if(token){
     btnLogout.href = "./index.html";
 
     document.querySelector(".pre-header").style.display = "flex";
-
-
-    
+   
     btnLogout.addEventListener("click", function () {
     console.log("Logout button clicked");
     localStorage.removeItem("token");
     
-
-
   });
   
 });
-
-
 
 } else {
 const modifyBtn = document.querySelector(".modify-btn");
@@ -82,7 +76,6 @@ fetch('http://localhost:5678/api/works', {
     document.querySelector(".gallery").innerHTML ="";
   generergallery(projects);
   
-
 const btnTous = document.querySelector(".tous");
 
 btnTous.addEventListener("click", function(){

@@ -1,4 +1,4 @@
-import { generergallery, afficherPage } from "./front.js";
+import { afficherPage } from "./front.js";
 
 
 document.addEventListener('DOMContentLoaded', (event) => {
@@ -63,11 +63,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
         modal2 = null;
     };
 
-
 const stopPropagation = function(e) {
         e.stopPropagation()
 };
-
 
 function genererModal(projects) {
     for(let i=0; i < projects.length; i++){
@@ -116,9 +114,6 @@ function genererModal(projects) {
                 genererModal(projects);
                 document.querySelector(".gallery").innerHTML= "";
                 afficherPage();
-                
-
-
           
             }) ;
         }else {
@@ -129,7 +124,6 @@ function genererModal(projects) {
     };
     };
     
-
     document.querySelectorAll(".js-modal").forEach(a => {
         fetch('http://localhost:5678/api/works', {
             method: "GET",
@@ -225,7 +219,6 @@ function genererModal(projects) {
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
-
         const formData = new FormData();
 formData.append("image", document.querySelector("input[type='file']").files[0]); 
 formData.append("title", titleForm.value);
@@ -273,42 +266,7 @@ fetch("http://localhost:5678/api/works", {
 })
 .then(data => console.log(data))
 .catch(error => console.error('Error:', error));
-       /** const formData = new FormData(form);
-        const fileF = imgForm.files[0];
-        const titleF = titleForm.value.trim();
-        const categorieF = categoryForm.value;
-    
-
-        for (let [key, value] of formData.entries()) {
-            console.log(key, value);
-            if(!value) {
-                alert("Veuillez remplir tous les champs");
-            }
-        };
-
-        formData.append("image", fileF);
-        formData.append("title", titleF);
-        formData.append("category", categorieF);
-        console.log(fileF + " / " + titleF + " / " + categorieF);
-        console.log(token)
-
-        fetch("http://localhost:5678/api/works", {
-            method : "POST",
-            body: formData,
-            headers: {"Content-Type": "multipart/form-data","Authorization": "Bearer "  + token,},
-        })
-        .then(response =>  {// Vérifiez si la réponse est en HTML ou JSON
-            const contentType = response.headers.get("content-type");
-            if (!response.ok) {
-                throw new Error('Erreur de réseau');
-            }
-            if (contentType && contentType.indexOf("application/json") !== -1) {
-                return response.json();
-            } else {
-                return response.text().then(text => { throw new Error(text); });
-            }
-        })
-        .then(response => console.log(res))**/
+     
     });
 
 });
