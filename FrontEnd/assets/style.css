@@ -22,6 +22,8 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	
+	
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -30,6 +32,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background-color: #FFFEF8;
 }
 ol, ul {
 	list-style: none;
@@ -56,7 +59,8 @@ body {
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px 0;
+	
 }
 section {
 	margin: 50px 0
@@ -97,6 +101,10 @@ nav li {
 
 li:hover {
 	color: #B1663C;
+}
+li a {
+	text-decoration: none;
+	color: black;
 }
 #introduction {
 	display: flex;
@@ -183,6 +191,335 @@ input[type="submit"]{
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em
+	margin: 2em;
+}
+.buttons {
+	display: flex;
+	justify-content: center;
+	width: 585;
+	height: 38px;
+	margin-bottom: 20px;
+}
+.buttons button {
+	height : 100%;
+	min-width: 100px;
+	margin-left: 5px;
+	margin-right: 5px;
+	border: #1D6154 solid 1px;
+	font-family: 'Syne';
+	background-color: #FFFEF8;
+	font-size: 16px;
+	color:#1D6154;
+	border-radius: 60px;
+	text-align: center;
+}
+.buttons button:hover{
+	background-color: #1D6154;
+	color: #FFFEF8;
 }
 
+/** Connection page **/
+.pre-header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: black;
+}
+.edit-bar {
+	display: flex;
+	height: 59px;
+	background-color: black;
+	color: white;
+	align-items: center;
+	
+}
+.edit-bar img{
+	background-color: black;
+}
+.mdp {
+	color:#1D6154;
+	text-decoration: underline;
+}
+
+.login-btn {
+	font-weight: bold;
+}
+.title-pf {
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+.title-pf h2{
+	
+	justify-content: center;
+	align-items: center;
+	margin-right: 15px;
+	margin-left: 15px;
+	padding-left: 40px;
+}
+
+.modify-btn {
+    display: block;
+    gap: 5px; /* Espace entre l'image et le texte, ajustez selon vos besoins */
+	margin-left: 15px;
+	margin-bottom: 30px;
+
+}
+
+.modify-btn img {
+    height: 20px; /* Ajustez la taille de l'image selon vos besoins */
+    width: auto; /* Garder les proportions de l'image */
+	margin-right: 5px;
+}
+
+.modify-btn a {
+	display: flex;
+	justify-content: center;
+	align-items:flex-end;
+	font-family: "Work Sans";
+	text-decoration: none;
+	color: black;
+}
+
+/** Modale **/
+
+.modal{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width:  100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.788);
+	display: none;
+	align-items: center;
+	justify-content: center;
+	
+}
+
+.close {
+	
+	display: flex;
+	justify-content: flex-end;
+}
+.close img {
+	cursor: pointer;
+}
+#titlemodal {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 40px;
+	font-family: "Work sans";
+	font: 26px;
+	color : black;
+	font-weight: normal;
+}
+
+.modal-wrapper{
+	width: 630px;
+	height: auto;
+	background-color:  white;
+	padding: 20px;
+	max-width: calc(100vw - 200px);
+	max-height: calc(100vh - 200px);
+	overflow: auto;
+	border-radius: 10px;
+	justify-content: center;
+	
+	
+	
+}
+
+.box-modal {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-content {
+	width: 80%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 15px;
+}
+
+.contener-image {
+	position: relative;
+	width: 17%;
+}
+
+.imgModal {
+	width: 100%;
+}
+
+.fond-btn {
+	position: absolute;
+	top : 10px;
+	right: 10px;
+	width: 17px;
+	height: 17px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: black;
+	border-radius: 3px;
+	cursor: pointer;	
+}
+
+.buttonDel {
+	display: flex;
+	width: 9px;
+	height: 11px;
+	background-color: black;
+	
+}
+
+.btn-ajouter {
+	height : 100%;
+	min-width: 100px;
+	margin-left: 5px;
+	margin-right: 5px;
+	border: #1D6154 solid 1px;
+	font-family: 'Syne';
+	background-color: #1D6154;
+	font-size: 16px;
+	color:white;
+	border-radius: 60px;
+	text-align: center;
+	padding: 10px, 20px;
+	cursor: pointer;
+}
+
+.box-btn {
+	display: flex;
+	justify-content: center;
+	width: 80%;
+	padding-top : 30px;
+	padding-bottom: 10px;
+	margin-top: 50px;
+	border-top: 1px solid #B3B3B3;
+}
+
+/** MODALE 2 **/
+.box-form {
+	display: flex;
+	justify-content: center;
+}
+.box-form form{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.box-modal2 {
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+}
+.greysquare {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	background-color: #E8F1F6;
+	border-radius: 3px;
+	margin-bottom: 20px;
+}
+
+.greysquare img {
+	width: 79px;
+	height: 79px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+#preview {
+	display: none;
+}
+.greysquare input {
+	height: 4px;
+}
+.greysquare label {
+	margin-left: 5px;
+	margin-right: 5px;
+	font-family: 'Work sans';
+	background-color: #CBD6DC;
+	font-size: 16px;
+	color:#306685;
+	border: 1px #CBD6DC solid;
+	border-radius: 60px;
+	text-align: center;
+	cursor: pointer;
+	padding-top: 5px;
+	padding-left: 12px;
+	padding-bottom: 6px;
+	padding-right: 12px;
+}
+.greysquare p {
+	font-size: 10px;
+	margin-bottom: 10px;
+	font-family: "Work sans";
+	margin-bottom: 15px;
+}
+.texte-doc label {
+	font-family: "Work sans";
+	font-size: 14px;
+	color :#3D3D3D;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+.texte-doc {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+.texte-doc input{
+	width: 100%;
+	height : 51px;
+	max-width: 501px;
+	border: none;
+	box-shadow: 0px 4px 14px 0px #00000017;
+}
+
+#categorie {
+	width: 100%;
+	height : 51px;
+	max-width: 501px;
+	border: none;
+	box-shadow: 0px 4px 14px 0px #00000017;
+}
+
+.btn-valider {
+	height : 100%;
+	width: 35%;
+	margin-left: 5px;
+	margin-right: 5px;
+	font-family: 'Syne';
+	background-color: #A7A7A7;
+	font-size: 16px;
+	color:white;
+	border: 1px #A7A7A7 solid;
+	border-radius: 60px;
+	text-align: center;
+	padding: 10px, 20px;
+	cursor: pointer;
+}
+
+.icone-m2 {
+	display: flex;
+	justify-content: space-between;
+}
+.icone-m2 .close img{
+	width: 12px;
+	height: 50%;
+}
+#backTo {
+	cursor: pointer;
+}
