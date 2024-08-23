@@ -20,26 +20,25 @@ export function afficherPage() {
     method: "GET",
       headers: { "Accept": "application/json","Content-Type": "application/json" },
   })
-    .then(response => {
-      return response.json();
-    })
-    .then(projects => {
-      console.log(projects);
-    generergallery(projects);
-    });
+  .then(response => {
+    return response.json();
+  })
+  .then(projects => {
+  generergallery(projects);
+  });
 };
 
 const token = localStorage.getItem("token");
 
 if(token){
-    document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("DOMContentLoaded", function() {
     document.querySelector(".modify-btn").style.display = "block";
     document.querySelectorAll(".buttons button").forEach(function(button) {
-        button.style.display = "none";   
+      button.style.display = "none";   
     });
 
     afficherPage();   
-   
+
     document.querySelector(".buttons").style.height = "0px";
 
     const btnLogout = document.querySelector(".loginBtn");
@@ -47,77 +46,70 @@ if(token){
     btnLogout.href = "./index.html";
 
     document.querySelector(".pre-header").style.display = "flex";
-   
+
     btnLogout.addEventListener("click", function () {
-    console.log("Logout button clicked");
-    localStorage.removeItem("token");
+      localStorage.removeItem("token");
+    });
     
   });
-  
-});
 
 } else {
-const modifyBtn = document.querySelector(".modify-btn");
-if (modifyBtn){
-modifyBtn.style.display = "none";
-};
+  const modifyBtn = document.querySelector(".modify-btn");
+  if (modifyBtn){
+    modifyBtn.style.display = "none";
+  };
 
-afficherPage();
+  afficherPage();
 
-fetch('http://localhost:5678/api/works', {
-  method: "GET",
+  fetch('http://localhost:5678/api/works', {
+    method: "GET",
     headers: { "Accept": "application/json","Content-Type": "application/json" },
-})
+  })
   .then(response => {
     return response.json();
   })
   .then(projects => {
-    console.log(projects);
     document.querySelector(".gallery").innerHTML ="";
-  generergallery(projects);
-  
-const btnTous = document.querySelector(".tous");
-
-btnTous.addEventListener("click", function(){
-  const projectTous = projects
-  console.log(projectTous);
-  document.querySelector(".gallery").innerHTML= "";
-  generergallery(projectTous);
-  return projectTous;
+    generergallery(projects);
     
-  })
- 
-  const btnobjets = document.querySelector(".objets");
+    const btnTous = document.querySelector(".tous");
 
-btnobjets.addEventListener("click", function(){
-  const projectfiltre = projects.filter(function(project){
-    return project.category.id === 1;
-  })
-  document.querySelector(".gallery").innerHTML= "";
-  generergallery(projectfiltre);
-   console.log(projectfiltre);
-  })
+    btnTous.addEventListener("click", function(){
+      const projectTous = projects
+      document.querySelector(".gallery").innerHTML= "";
+      generergallery(projectTous);
+      return projectTous;
+      })
+    
+    const btnobjets = document.querySelector(".objets");
 
-  const btnAppartement = document.querySelector(".appartements");
+    btnobjets.addEventListener("click", function(){
+      const projectfiltre = projects.filter(function(project){
+        return project.category.id === 1;
+      })
+      document.querySelector(".gallery").innerHTML= "";
+      generergallery(projectfiltre);
+      })
 
-btnAppartement.addEventListener("click", function () {
-   const projectfiltre = projects.filter(function (project) {
-       return project.category.id === 2;
-  });
-  document.querySelector(".gallery").innerHTML= "";
-  generergallery(projectfiltre);
-    console.log(projectfiltre);
-  });
+    const btnAppartement = document.querySelector(".appartements");
 
-  const btnHotel = document.querySelector(".hotels");
+    btnAppartement.addEventListener("click", function () {
+      const projectfiltre = projects.filter(function (project) {
+        return project.category.id === 2;
+      });
+      document.querySelector(".gallery").innerHTML= "";
+      generergallery(projectfiltre);
 
-  btnHotel.addEventListener("click", function () {
-     const projectfiltre = projects.filter(function (project) {
-         return project.category.id === 3;
+      });
+
+    const btnHotel = document.querySelector(".hotels");
+
+    btnHotel.addEventListener("click", function () {
+      const projectfiltre = projects.filter(function (project) {
+        return project.category.id === 3;
+      });
+      document.querySelector(".gallery").innerHTML= "";
+      generergallery(projectfiltre);
+      });
     });
-    document.querySelector(".gallery").innerHTML= "";
-    generergallery(projectfiltre);
-      console.log(projectfiltre);
-    });
-  });
 };
