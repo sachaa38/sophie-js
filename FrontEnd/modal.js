@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         
     const closeModal2 = function(e) {
         if(modal2 === null) return;
-        e.preventDefault();
+        if(e) e.preventDefault();
         modal2.style.display = "none";
         modal2.setAttribute("aria-hidden", "true");
         modal2.removeAttribute("aria-modal");
@@ -162,6 +162,33 @@ document.addEventListener('DOMContentLoaded', (event) => {
         closeModal2(e);
         openModal(e);
     });
+
+    fetch('http://localhost:5678/api/categories', {
+        method: "GET",
+        headers: { "Accept": "application/json","Content-Type": "application/json" },
+    }) 
+    .then(response => {
+        return response.json();
+    })
+    .then(repCat => {
+        console.log(repCat)
+        for (let i=0; i < repCat.length; i++) {
+            const indexOpt = repCat[i];
+            const selectForm = document.getElementById("categorie");
+            const optionItem = document.createElement("option");
+            optionItem.value = indexOpt.id;
+            optionItem.innerText = indexOpt.name;
+
+            selectForm.appendChild(optionItem);
+
+
+
+
+        }
+    });
+    
+    
+
 
     const imgForm = document.getElementById("files");
     const titleForm = document.getElementById("texte");

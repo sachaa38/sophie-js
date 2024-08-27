@@ -71,8 +71,44 @@ if(token){
   .then(projects => {
     document.querySelector(".gallery").innerHTML ="";
     generergallery(projects);
-    
+
+
+    fetch('http://localhost:5678/api/categories', {
+      method: "GET",
+      headers: { "Accept": "application/json","Content-Type": "application/json" },
+    }) 
+    .then(response => {
+      return response.json();
+    })
+    .then(repCat => {
+      console.log(repCat)
+      for (let i=0; i < repCat.length; i++) {
+        const indexBtn = repCat[i]
+        const btnDiv = document.querySelector(".buttons");
+        const NewBtn = document.createElement("button");
+        NewBtn.innerText = indexBtn.name;
+        NewBtn.category = indexBtn.id;
+
+        btnDiv.appendChild(NewBtn);
+
+        NewBtn.addEventListener("click", function () {
+          const projectfiltre = projects.filter(project => project.category.id === parseInt(NewBtn.category));
+          document.querySelector(".gallery").innerHTML = "";
+          generergallery(projectfiltre);
+        });
+      };
+
+    });
+  
     const btnTous = document.querySelector(".tous");
+
+    btnTous.addEventListener("click", function () {
+      document.querySelector(".gallery").innerHTML = "";
+      generergallery(projects);
+    });
+  });
+};
+    /*const btnTous = document.querySelector(".tous");
 
     btnTous.addEventListener("click", function(){
       const projectTous = projects
@@ -110,6 +146,5 @@ if(token){
       });
       document.querySelector(".gallery").innerHTML= "";
       generergallery(projectfiltre);
-      });
-    });
-};
+      });*/
+    
