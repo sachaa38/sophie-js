@@ -1,6 +1,3 @@
-import { afficherPage } from "./front.js";
-
-
 document.addEventListener('DOMContentLoaded', (event) => {
     let modal = null;
     let modal2 = null;
@@ -104,12 +101,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
                     .then(response => {
                         if (response.ok) {
                         sectionmodal.removeChild(contenerImage);
-                        projects = projects.filter(project => project.id !== id);
-                        
+                        projects = projects.filter(project => project.id !== id); 
                         };
-                
                     });
-                }
+                };
             }); 
         };
     };
@@ -171,7 +166,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         return response.json();
     })
     .then(repCat => {
-        console.log(repCat)
         for (let i=0; i < repCat.length; i++) {
             const indexOpt = repCat[i];
             const selectForm = document.getElementById("categorie");
@@ -180,15 +174,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
             optionItem.innerText = indexOpt.name;
 
             selectForm.appendChild(optionItem);
-
-
-
-
         }
     });
-    
-    
-
 
     const imgForm = document.getElementById("files");
     const titleForm = document.getElementById("texte");
@@ -264,19 +251,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
             document.getElementById("modal2").style.display ="none";
             alert("Votre projet a été ajouté avec succès !");
 
-            fetch('http://localhost:5678/api/works', {
-                method: "GET",
-                headers: { "Accept": "application/json","Content-Type": "application/json" },
-            })
-            .then(response => {
-                return response.json();
-            })
-            .then(projects => {
-                document.querySelector(".gallery").innerHTML= "";
-                afficherPage();
-                document.querySelector(".modal-content").innerHTML = "";
-                genererModal(projects);
-            });                
+            const sectiongallery = document.querySelector(".gallery");
+            const projetElement = document.createElement("figure");
+            const projetImg = document.createElement("img");
+            projetImg.src = document.querySelector("input[type='file']").files[0];
+            const projetTitle = document.createElement("figcaption");
+            projetTitle.innerText = titleForm.value;
+        
+            sectiongallery.appendChild(projetElement);
+            projetElement.appendChild(projetImg);
+            projetElement.appendChild(projetTitle);
 
         } else {
             if (imgForm.files.length < 0 || titleForm.value.trim() == "" || categoryForm.value == "vide") {

@@ -37,7 +37,7 @@ if(token){
       button.style.display = "none";   
     });
 
-    afficherPage();   
+    afficherPage();
 
     document.querySelector(".buttons").style.height = "0px";
 
@@ -59,8 +59,6 @@ if(token){
     modifyBtn.style.display = "none";
   };
 
-  afficherPage();
-
   fetch('http://localhost:5678/api/works', {
     method: "GET",
     headers: { "Accept": "application/json","Content-Type": "application/json" },
@@ -73,6 +71,7 @@ if(token){
     generergallery(projects);
 
 
+
     fetch('http://localhost:5678/api/categories', {
       method: "GET",
       headers: { "Accept": "application/json","Content-Type": "application/json" },
@@ -81,7 +80,6 @@ if(token){
       return response.json();
     })
     .then(repCat => {
-      console.log(repCat)
       for (let i=0; i < repCat.length; i++) {
         const indexBtn = repCat[i]
         const btnDiv = document.querySelector(".buttons");
@@ -108,43 +106,3 @@ if(token){
     });
   });
 };
-    /*const btnTous = document.querySelector(".tous");
-
-    btnTous.addEventListener("click", function(){
-      const projectTous = projects
-      document.querySelector(".gallery").innerHTML= "";
-      generergallery(projectTous);
-      return projectTous;
-      })
-    
-    const btnobjets = document.querySelector(".objets");
-
-    btnobjets.addEventListener("click", function(){
-      const projectfiltre = projects.filter(function(project){
-        return project.category.id === 1;
-      })
-      document.querySelector(".gallery").innerHTML= "";
-      generergallery(projectfiltre);
-      })
-
-    const btnAppartement = document.querySelector(".appartements");
-
-    btnAppartement.addEventListener("click", function () {
-      const projectfiltre = projects.filter(function (project) {
-        return project.category.id === 2;
-      });
-      document.querySelector(".gallery").innerHTML= "";
-      generergallery(projectfiltre);
-
-      });
-
-    const btnHotel = document.querySelector(".hotels");
-
-    btnHotel.addEventListener("click", function () {
-      const projectfiltre = projects.filter(function (project) {
-        return project.category.id === 3;
-      });
-      document.querySelector(".gallery").innerHTML= "";
-      generergallery(projectfiltre);
-      });*/
-    
