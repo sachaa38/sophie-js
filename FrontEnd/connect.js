@@ -24,8 +24,6 @@ function connection(){
         const stockToken = window.localStorage.setItem("token", token);
         if (token) {
             window.location.href = "./index.html";
-            
-            console.log("Le token " + stockToken + "a bien été stocké")
 
         }else {
             alert("Erreur dans l’identifiant ou le mot de passe");

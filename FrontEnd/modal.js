@@ -173,16 +173,22 @@ document.addEventListener('DOMContentLoaded', (event) => {
     function previewImage() {
         const file = imgForm.files[0];
         if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                preview.src = e.target.result;
-                preview.style.display = "block";
-                imgVide.style.display = "none";
-                document.getElementById("label-photo").style.display ="none";
-                document.getElementById("format-img").style.display ="none";
-
+            const imgFormTaille = file.size;
+            console.log(imgFormTaille)
+            if(imgFormTaille > 4000000) {
+                alert("L'image est trop lourde") 
+            } else {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = "block";
+                    imgVide.style.display = "none";
+                    document.getElementById("label-photo").style.display ="none";
+                    document.getElementById("format-img").style.display ="none";
+                }
+                reader.readAsDataURL(file);
             }
-            reader.readAsDataURL(file);
+            
         }
     }
     function checkForm() {
@@ -194,8 +200,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
     };
 
     imgForm.addEventListener("change", function() {
-    previewImage();
-    checkForm()
+        
+        previewImage();
+        checkForm()
     });
 
     titleForm.addEventListener("input", function() {
